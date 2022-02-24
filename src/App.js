@@ -1,23 +1,28 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes, Switch, Navigate } from 'react-router-dom';
+import LoginPage from './Pages/LoginPage';
+import errorPage from './Pages/ErrorPage';
+import UserPage from './Pages/UserPage';
+import ParentalPage from './Pages/ParentalPage';
+import ProtectedRoute from './components/ProtectedRoute';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route path="/" element={<LoginPage />} />
+
+          <ProtectedRoute>
+            <Route path="/parent" element={<ParentalPage />} isParent={true} />
+          </ProtectedRoute>
+
+          <Route path="/user" element={<UserPage />} isParent={false} />
+
+          <Route path="*" element={<Navigate to={<errorPage />} isParent={false} />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
