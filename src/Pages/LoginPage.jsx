@@ -18,7 +18,7 @@ function LoginPage({ setParent }) {
             <label htmlFor="password"> Password:</label>
             <input type={Text} placeholder="Username" id="password" ref={passwordInput}> </input>
 
-
+            <button>Click here to go watch some videos!</button>
         </div>
     )
 }

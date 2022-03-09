@@ -1,9 +1,9 @@
 import React from "react";
-import { useRef } from "react";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import { connect } from "react-redux";
 import { whitelistCreator, removeWhitelist, setParentSearch } from "./shared/actions/User.actions"
 
-function ParentalSearchPage({ setParentSearch, whitelistCreator, removeWhitelist }) {
+function ParentalSearch({ setParentSearch, whitelistCreator, removeWhitelist }) {
 
     const [parentCreatorQuery, setParentCreatorQuery] = useState("");
     const [parentVideoQuery, setParentVideoQuery] = useState("");
@@ -26,6 +26,17 @@ function ParentalSearchPage({ setParentSearch, whitelistCreator, removeWhitelist
             </div>
         </div>
     )
+};
+
+const mapStateToProps {
+    return { }
 }
 
-export default ParentalSearchPage;
+const mapDispatchToProps {
+    setSearch,
+    whitelistCreator,
+    removeWhitelist
+}
+
+
+export default connect(mapDispatchToProps, mapStateToProps)(ParentalSearch)
