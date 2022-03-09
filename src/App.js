@@ -10,6 +10,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 function App() {
   return (
     <div className="App">
+      <Menu />
       <Router>
         <Routes>
           <Route path="/" element={<LoginPage />} />

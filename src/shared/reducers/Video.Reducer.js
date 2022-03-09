@@ -10,14 +10,29 @@ import {
     CLEAR_PARENT_SEARCH
 } from "../actions/Video.actions";
 
-const videosReducer = (state = false, action) => {
-    switch (action.type) {
-        case 'PARENT':
-            return (!state);
-        default:
-            return (state);
-    }
+const initialState = {
+    whitelist: [],
+    parentSearchState: [],
+    userSearchState: [],
 }
 
-
-export default connect(mapDispatchToProps, mapStateToProps)(loggedInReducer)
+export default function videosReducer(state = initialState, action) {
+    switch (action.type) {
+        case WHITELIST_CREATOR:
+            return { ...state, whitelist: action.channelID };
+        case REMOVE_WHITELIST:
+            return { ...state, whitelist: state.whitelist.filter((val) => val.creator !== action.creator), };
+        case CLEAR_WHITELIST:
+            return { ...state, whitelist: [] };
+        case SET_PARENT_SEARCH:
+            return { ...state, parentSearchState: action.parentSearch };
+        case CLEAR_PARENT_SEARCH:
+            return { ...state, parentSearchState: [] };
+        case SET_USER_SEARCH:
+            return { ...state, userSearchState: action.userSearch };
+        case CLEAR_USER_SEARCH:
+            return { ...state, userSearchState: [] };
+        default:
+            return state;
+    }
+};
