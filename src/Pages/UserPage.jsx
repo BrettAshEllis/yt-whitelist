@@ -3,15 +3,12 @@ import React from "react";
 function UserPage() {
     return (
         <div>
-            <label htmlFor="userSearch">Search for videos, kiddo</label>
-            <input type={Text} id="userSearch" />
-            <br />
+            <label htmlFor="userCreator">Creator: </label>
+            <input type={Text} placeholder="Search for one of your approved content creators!" id="userCreator" />
 
-            <label></label>
-            <select>
-                <option>Channel</option>
-                <option>Videos</option>
-            </select>
+            <label htmlFor="userVideo">Video: </label>
+            <input type={Text} placeholder="Search for a video from one of your approved content creators!" id="userVideo" />
+
         </div>
 
     )
