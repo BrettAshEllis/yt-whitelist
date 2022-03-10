@@ -1,2 +1,2 @@
 export * from "./User.actions"
-export * from "./Video.actions"
+export * from "./Whitelist.actions"
