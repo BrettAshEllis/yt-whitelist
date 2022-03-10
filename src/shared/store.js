@@ -3,11 +3,11 @@ import rootReducer from "./reducers/RootReducer";
 
 const initialState = {
     parent: null,
-    videos: {
-        whitelist: [],
+    search: {
         parentSearchState: [],
-        userSearchState: [],
-    }
+        userSearchState: []
+    },
+    whitelist: [],
 }
 
 export default createStore(rootReducer, initialState)
