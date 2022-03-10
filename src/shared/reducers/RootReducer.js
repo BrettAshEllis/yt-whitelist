@@ -1,10 +1,12 @@
 import { combineReducers } from "redux";
 import { userReducer } from "./User.Reducer"
-import { videosReducer } from "../Video.reducer"
+import { whitelistReducer } from "./Whitelist.reducer"
+import { searchReducer } from "./Search.Reducer"
 
 const rootReducer = combineReducers({
-    videosReducer,
-    userReducer
+    whitelistReducer,
+    userReducer,
+    searchReducer
 });
 
 export default rootReducer;
