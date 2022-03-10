@@ -1,5 +1,3 @@
-import React from "react";
-import { connect } from "react-redux";
 import { SET_PARENT, CLEAR_PARENT } from "../actions";
 
 const initialState = {
