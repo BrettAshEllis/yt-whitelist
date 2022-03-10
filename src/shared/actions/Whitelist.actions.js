@@ -15,19 +15,3 @@ export const removeWhitelist = (id) => {
 export const clearWhitelist = () => {
     return { type: CLEAR_WHITELIST };
 };
-
-export const setUserSearch = (userSearch) => {
-    return { type: SET_USER_SEARCH, userSearch }
-};
-
-export const clearUserSearch = () => {
-    return { type: CLEAR_USER_SEARCH }
-}
-
-export const setParentSearch = (parentSearch) => {
-    return { type: SET_PARENT_SEARCH, parentSearch }
-}
-
-export const clearParentSearch = () => {
-    return { type: CLEAR_PARENT_SEARCH }
-}
