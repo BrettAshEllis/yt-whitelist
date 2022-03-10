@@ -9,12 +9,12 @@ export const setUserSearch = (userSearch) => {
 
 export const clearUserSearch = () => {
     return { type: CLEAR_USER_SEARCH }
-}
+};
 
 export const setParentSearch = (parentSearch) => {
     return { type: SET_PARENT_SEARCH, parentSearch }
-}
+};
 
 export const clearParentSearch = () => {
     return { type: CLEAR_PARENT_SEARCH }
-}
+};
