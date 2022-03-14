@@ -10,17 +10,30 @@ export default function useParentFetch(parentSearch) {
     useEffect(() => {
         async function loadData() {
             setLoading(true)
-        };
-        if (parentSearch.length === 0) {
-            setLoading(false);
-            return
+
+            if (parentSearch.length === 0) {
+                setLoading(false);
+                return;
+            }
+            setData(null);
+            setError(null);
+            try {
+                const response = await fetch(baseURL + parentSearch);
+                const json = await response.json();
+                const videos = json.data.map((val) => ({
+                    id: val.id,
+                    title: val.snippet.title,
+                    descr: val.snippet.description
+                }));
+                setData(videos);
+            } catch (err) {
+                setError(err);
+            } finally {
+                setLoading(false);
+            }
         }
-        setData(null);
-        setError(null);
-        try {
+        loadData;
+    }, [parentSearch]);
 
-        }
-    })
-
-
+    return { data, error, loading };
 }
