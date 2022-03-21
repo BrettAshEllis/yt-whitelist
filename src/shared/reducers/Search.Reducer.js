@@ -2,12 +2,14 @@ import {
     SET_PARENT_SEARCH,
     CLEAR_PARENT_SEARCH,
     SET_USER_SEARCH,
-    CLEAR_USER_SEARCH
+    CLEAR_USER_SEARCH,
+
 } from "../actions/Search.actions";
 
 const initialState = {
     parentSearchState: [],
-    userSearchState: []
+    userSearchState: [],
+
 }
 
 export default function searchReducer(state = initialState, action) {
@@ -20,6 +22,7 @@ export default function searchReducer(state = initialState, action) {
             return { ...state, userSearchState: action.userSearch };
         case CLEAR_USER_SEARCH:
             return { ...state, userSearchState: [] };
+
         default:
             return state;
     }
