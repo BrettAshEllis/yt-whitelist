@@ -4,9 +4,9 @@ import { whitelistReducer } from "./Whitelist.reducer"
 import { searchReducer } from "./Search.Reducer"
 
 const rootReducer = combineReducers({
-    whitelistReducer,
-    userReducer,
-    searchReducer
+    whitelisted: whitelistReducer,
+    parent: userReducer,
+    search: searchReducer
 });
 
 export default rootReducer;
