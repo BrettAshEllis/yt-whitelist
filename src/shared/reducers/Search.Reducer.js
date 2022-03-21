@@ -7,8 +7,10 @@ import {
 } from "../actions/Search.actions";
 
 const initialState = {
-    parentSearchState: [],
-    userSearchState: [],
+    search: {
+        parentSearchState: [],
+        userSearchState: [],
+    }
 
 }
 
