@@ -9,8 +9,9 @@ import {
 
 const initialState = {
     whitelist: [],
-    parentSearchState: [],
-    userSearchState: [],
+    loading: false,
+    channel: [],
+    error: "",
 }
 
 export default function whitelistReducer(state = initialState, action) {
@@ -24,9 +25,9 @@ export default function whitelistReducer(state = initialState, action) {
         case FETCH_CHANNEL_REQUEST:
             return { ...state, loading: true };
         case FETCH_CHANNEL_SUCCESS:
-            return { ...state, };
+            return { ...state, loading: false, channel: action.payload, error: "" };
         case FETCH_CHANNEL_FAILURE:
-            return { ...state, }
+            return { ...state, loading: false, channel: [], error: action.payload }
         default:
             return state;
     }
