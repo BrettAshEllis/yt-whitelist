@@ -21,14 +21,20 @@ function ParentalSearch({ setParentSearch, whitelistCreator, removeWhitelist }) 
     )
 };
 
-const mapStateToProps {
-    return { }
+const mapStateToProps = state => {
+    return {
+        parent: state.parent,
+        whitelist: state.whitelisted.whitelist,
+        search: state.search.parentSearchState
+    }
 };
 
-const mapDispatchToProps {
-    setParentSearch,
-    addWhitelist,
-    removeWhitelist
+const mapDispatchToProps = dispatch => {
+    return {
+        setParentSearch,
+        add: addWhitelist,
+        remove: removeWhitelist,
+    }
 }
 
 
