@@ -1,5 +1,6 @@
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import rootReducer from "./reducers/RootReducer";
+import thunk from "redux-thunk"
 
 const initialState = {
     parent: null,
@@ -10,4 +11,4 @@ const initialState = {
     whitelist: [],
 }
 
-export default createStore(rootReducer, initialState)
+export default createStore(rootReducer, initialState, applyMiddleware(thunk))
