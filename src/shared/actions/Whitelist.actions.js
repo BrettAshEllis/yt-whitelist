@@ -8,7 +8,7 @@ export const FETCH_CHANNEL_SUCCESS = "Fetch Channel Success"
 export const FETCH_CHANNEL_FAILURE = "Fetch Channel Failure"
 
 
-export const ADD_WHITELIST = (title) => {
+export const addWhitelist = (title) => {
     return { type: ADD_WHITELIST, title };
 };
 
@@ -34,10 +34,14 @@ export const fetchChannelFailure = (error) => {
 
 export const fetchChannel = () => {
     return (dispatch) => {
-        dispatch(fetchChannelRequest)
+        dispatch(fetchChannelRequest())
         axios.get(`https://www.googleapis.com/youtube/v3/channels?part=snippet&forUsername=${parentSearch}`)
             .then(response => {
-                const channel = response.data
+                const channel = response.data.map((val) => ({
+                    channel_title: val.items.snippet.title,
+                    channel_id: val.items.id,
+                    channel_desc: val.items.snippet.description,
+                }));
                 dispatch(fetchChannelSuccess(channel))
             })
             .catch(error => {
