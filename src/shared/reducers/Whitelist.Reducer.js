@@ -2,10 +2,9 @@ import {
     ADD_WHITELIST,
     REMOVE_WHITELIST,
     CLEAR_WHITELIST,
-    SET_USER_SEARCH,
-    CLEAR_USER_SEARCH,
-    SET_PARENT_SEARCH,
-    CLEAR_PARENT_SEARCH
+    FETCH_CHANNEL_REQUEST,
+    FETCH_CHANNEL_SUCCESS,
+    FETCH_CHANNEL_FAILURE,
 } from "../actions/Whitelist.actions";
 
 const initialState = {
@@ -22,7 +21,12 @@ export default function whitelistReducer(state = initialState, action) {
             return { ...state, whitelist: state.whitelist.filter((val) => val.id !== action.id), };
         case CLEAR_WHITELIST:
             return { ...state, whitelist: [] };
-
+        case FETCH_CHANNEL_REQUEST:
+            return { ...state, loading: true };
+        case FETCH_CHANNEL_SUCCESS:
+            return { ...state, };
+        case FETCH_CHANNEL_FAILURE:
+            return { ...state, }
         default:
             return state;
     }
