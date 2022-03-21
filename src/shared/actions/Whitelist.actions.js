@@ -32,17 +32,17 @@ export const fetchChannelFailure = (error) => {
     return { type: FETCH_CHANNEL_FAILURE, error }
 };
 
-export const fetchChannels = () => {
+export const fetchChannel = () => {
     return (dispatch) => {
         dispatch(fetchChannelRequest)
-        axios.get(`https://www.googleapis.com/youtube/v3/channels`)
+        axios.get(`https://www.googleapis.com/youtube/v3/channels?part=snippet&forUsername=${parentSearch}`)
             .then(response => {
                 const channel = response.data
                 dispatch(fetchChannelSuccess(channel))
             })
             .catch(error => {
                 const errorMsg = error.message
-                dispatch(fetchChannelFailure(err))
+                dispatch(fetchChannelFailure(errorMsg))
             })
     }
 }
