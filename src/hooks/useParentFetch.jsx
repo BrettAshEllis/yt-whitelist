@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 
-const baseURL = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=channel&maxResults=5&key=AIzaSyAnu7Cu2x6E1HbI-sNDkbLrtbbn-oWAJhI&forUsername=`
+const baseURL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&forUsername=Jerma985&maxResults=1&key=AIzaSyAnu7Cu2x6E1HbI-sNDkbLrtbbn-oWAJhI`
 
 export default function useParentFetch(parentSearch) {
     const [data, setData] = useState(null);
