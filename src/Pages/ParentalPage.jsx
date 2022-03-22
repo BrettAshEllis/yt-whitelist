@@ -1,31 +1,45 @@
 import React from "react";
-import { useRef } from "react";
-import { useState } from "react";
-import { whitelistCreator, removeWhitelist, setParentSearch } from "./shared/actions/User.actions"
+import { useRef, useState } from "react";
+import { connect } from "react-redux";
+import { addWhitelist, removeWhitelist } from "./shared/actions/Whitelist.actions"
+import { setParentSearch } from "../shared/actions/Search.actions"
+import { useEffect } from "react";
+import { fetchChannel } from "../shared/actions";
 
-function ParentalSearchPage({ setParentSearch, whitelistCreator, removeWhitelist }) {
+function ParentalSearch({ setParentSearch, addWhitelist, removeWhitelist, fetchChannel }) {
 
     const [parentCreatorQuery, setParentCreatorQuery] = useState("");
-    const [parentVideoQuery, setParentVideoQuery] = useState("");
     const parentCreatorSearch = useRef(null);
-    const parentVideoSearch = useRef(null);
-
+    useEffect(() => {
+        fetchChannel()
+    }, [parentCreatorQuery])
 
     return (
         <div>
             <div>
                 <label htmlFor="parentCreatorSearch">Search for a content creator to approve!</label>
-                <input type={Text} placeholder="E.g. PBS Kids" id="parentCreator" ref={parentCreatorSearch} />
+                <input type={Text} placeholder="E.g. Jerma985" id="parentCreator" ref={parentCreatorSearch} />
                 <button onClick={() => { setParentCreatorQuery(parentCreatorSearch.current.value); }}> Search creators! </button>
-            </div>
-            <br />
-            <div>
-                <label htmlFor="parentVideoSearch">"Search for a video to approve!"</label>
-                <input type={Text} placeholder="E.g. Minecraft Lets Play" id="parentVideo" />
-                <button onClick={() => { setParentVideoQuery(parentVideoSearch.current.value); }}> Search videos! </button>
             </div>
         </div>
     )
+};
+
+const mapStateToProps = state => {
+    return {
+        parent: state.parent,
+        whitelist: state.whitelisted.whitelist,
+        search: state.search.parentSearchState
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        setParentSearch,
+        add: addWhitelist,
+        remove: removeWhitelist,
+    }
 }
 
-export default ParentalSearchPage;
+
+export default connect(mapDispatchToProps, mapStateToProps)(ParentalSearch)

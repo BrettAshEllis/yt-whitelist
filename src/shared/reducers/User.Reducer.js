@@ -1,5 +1,3 @@
-import React from "react";
-import { connect } from "react-redux";
 import { SET_PARENT, CLEAR_PARENT } from "../actions";
 
 const initialState = {
@@ -9,7 +7,7 @@ const initialState = {
 export default function userReducer(state = initialState, action) {
     switch (action.type) {
         case SET_PARENT:
-            return { ...state, parentState: action.parentUsername };
+            return action.parent;
         case CLEAR_PARENT:
             return null;
         default:
