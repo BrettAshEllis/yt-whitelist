@@ -7,7 +7,7 @@ const initialState = {
 export default function userReducer(state = initialState, action) {
     switch (action.type) {
         case SET_PARENT:
-            return { ...state, parentState: action.parentUsername };
+            return action.parent;
         case CLEAR_PARENT:
             return null;
         default:
