@@ -1,24 +1,30 @@
 import React from "react";
 import { useRef } from "react";
 
-
-
 function LoginPage({ setParent }) {
 
-    const parentUsername = useRef(null);
-    const parentPassword = useRef(null);
+    const usernameInput = useRef(null);
+    const passwordInput = useRef(null);
 
+    const handleLogin = useCallback(() => {
+        const username = usernameInput.current.value;
+        const password = passwordInput.current.value;
+        const json = login(username, password)
+        if (!json.success) {
+            console.log(json.error);
+        } else setParent(username)
+    }, [])
     return (
         <div>
-            <label htmlFor="username">Username: </label>
-            <input type={Text} placeholder="Username" id="username" ref={parentUsername}> </input>
+            <label htmlFor="usernameField">Username: </label>
+            <input type={Text} placeholder="Username" id="usernameField" ref={usernameInput}> </input>
 
             <br />
 
-            <label htmlFor="password">Password: </label>
-            <input type={Text} placeholder="Password" id="password" ref={parentPassword}> </input>
+            <label htmlFor="passwordField">Password: </label>
+            <input type={Text} placeholder="Password" id="passwordField" ref={passwordInput}> </input>
 
-            <button onClick={() => { setParent(parentUsername.current.value); }}>Click here to go watch some videos!</button>
+            <button onClick={handleLogin}>Login</button>
         </div>
     )
 }
