@@ -5,7 +5,7 @@ import thunk from "redux-thunk"
 const initialState = {
     parent: null,
     search: [],
-    whitelisted: [],
+    whitelist: [],
 }
 
 export default createStore(rootReducer, initialState, applyMiddleware(thunk))
