@@ -5,7 +5,14 @@ import thunk from "redux-thunk"
 const initialState = {
     parent: null,
     search: [],
-    whitelist: [],
+    whitelisted: {
+        whitelist: [],
+        apiCall: {
+            loading: false,
+            channel: [],
+            error: "",
+        }
+    }
 }
 
 export default createStore(rootReducer, initialState, applyMiddleware(thunk))
