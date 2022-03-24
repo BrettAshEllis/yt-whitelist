@@ -9,15 +9,17 @@ import {
 
 const initialState = {
     whitelist: [],
-    loading: false,
-    channel: [],
-    error: "",
+    apiCall: {
+        loading: false,
+        channel: [],
+        error: "",
+    }
 }
 
 export default function whitelistReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_WHITELIST:
-            return { ...state, whitelist: [...state.whitelist, { title: action.title, description: items.snippet.description, id: items.id, }] };
+            return { ...state, whitelist: [...state.whitelist, { title: action.title, description: action.description, id: action.id, }] };
         case REMOVE_WHITELIST:
             return { ...state, whitelist: state.whitelist.filter((val) => val.id !== action.id), };
         case CLEAR_WHITELIST:
