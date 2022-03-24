@@ -1,13 +1,10 @@
 import React from "react";
-
+//! Show whitelisted channels
+//! Add login path(menu?)
 function UserPage() {
     return (
         <div>
-            <label htmlFor="userCreator">Creator: </label>
-            <input type={Text} placeholder="Search for one of your approved content creators!" id="userCreator" />
-
-            <label htmlFor="userVideo">Video: </label>
-            <input type={Text} placeholder="Search for a video from one of your approved content creators!" id="userVideo" />
+            <h1> Here are your available content creators: </h1>
 
         </div>
 
