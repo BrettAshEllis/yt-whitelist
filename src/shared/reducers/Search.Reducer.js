@@ -1,6 +1,6 @@
 import {
-    SET_PARENT_SEARCH,
-    CLEAR_PARENT_SEARCH,
+    SET_SEARCH,
+    CLEAR_SEARCH,
     // SET_USER_SEARCH,
     // CLEAR_USER_SEARCH,
 
@@ -12,9 +12,9 @@ const initialState = {
 
 export default function searchReducer(state = initialState, action) {
     switch (action.type) {
-        case SET_PARENT_SEARCH:
-            return { ...state, search: action.parentSearch };
-        case CLEAR_PARENT_SEARCH:
+        case SET_SEARCH:
+            return { ...state, search: action.search };
+        case CLEAR_SEARCH:
             return { ...state, search: [] };
         // case SET_USER_SEARCH:
         //     return { ...state, userSearchState: action.userSearch };

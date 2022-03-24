@@ -1,7 +1,7 @@
 // export const SET_USER_SEARCH = "Set User Search"
 // export const CLEAR_USER_SEARCH = "Clear User Search"
-export const SET_PARENT_SEARCH = "Set Parent Search"
-export const CLEAR_PARENT_SEARCH = "Clear Parent Search"
+export const SET_SEARCH = "Set Search"
+export const CLEAR_SEARCH = "Clear Search"
 
 
 // export const setUserSearch = (userSearch) => {
@@ -12,11 +12,11 @@ export const CLEAR_PARENT_SEARCH = "Clear Parent Search"
 //     return { type: CLEAR_USER_SEARCH }
 // };
 
-export const setParentSearch = (parentSearch) => {
-    return { type: SET_PARENT_SEARCH, parentSearch }
+export const setSearch = (search) => {
+    return { type: SET_SEARCH, search }
 };
 
-export const clearParentSearch = () => {
-    return { type: CLEAR_PARENT_SEARCH }
+export const clearSearch = () => {
+    return { type: CLEAR_SEARCH }
 };
 

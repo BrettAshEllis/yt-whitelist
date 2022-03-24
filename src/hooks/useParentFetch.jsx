@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react"
 
-const baseURL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&forUsername=Jerma985&maxResults=1&key=AIzaSyAnu7Cu2x6E1HbI-sNDkbLrtbbn-oWAJhI`
+const baseURL = `https://youtube.googleapis.com/youtube/v3/channels?part=snippet&forUsername=${search}&maxResults=1&key=AIzaSyAnu7Cu2x6E1HbI-sNDkbLrtbbn-oWAJhI`
 
-export default function useParentFetch(parentSearch) {
+export default function useParentFetch(search) {
     const [data, setData] = useState(null);
     const [loading, setLoading] = useState(null);
     const [error, setError] = useState(null);
@@ -11,21 +11,21 @@ export default function useParentFetch(parentSearch) {
         async function loadData() {
             setLoading(true)
 
-            if (parentSearch.length === 0) {
+            if (search.length === 0) {
                 setLoading(false);
                 return;
             }
             setData(null);
             setError(null);
             try {
-                const response = await fetch(baseURL + parentSearch);
+                const response = await fetch(baseURL + search);
                 const json = await response.json();
-                const videos = json.data.map((val) => ({
+                const channels = json.data.map((val) => ({
                     id: val.id,
                     title: val.snippet.title,
                     descr: val.snippet.description
                 }));
-                setData(videos);
+                setData(channels);
             } catch (err) {
                 setError(err);
             } finally {
@@ -33,7 +33,7 @@ export default function useParentFetch(parentSearch) {
             }
         }
         loadData;
-    }, [parentSearch]);
+    }, [search]);
 
     return { data, error, loading };
 }
