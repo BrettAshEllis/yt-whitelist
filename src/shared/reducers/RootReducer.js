@@ -6,7 +6,7 @@ import { searchReducer } from "./Search.Reducer"
 const rootReducer = combineReducers({
     whitelisted: whitelistReducer,
     parent: userReducer,
-    search: searchReducer
+    search: searchReducer,
 });
 
 export default rootReducer;
